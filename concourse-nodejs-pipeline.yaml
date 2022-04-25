@@ -1,0 +1,33 @@
+resources:
+- name: source-code
+  type: git
+  source:
+    uri: https://github.com/rseroter/pluralsight-concourse-dotnetcore
+    branch: master
+
+jobs:
+  - name: pull-source
+    plan:
+    - get: source-code
+    - task: first-task
+      config:
+        platform: linux
+        image_resource:
+          type: docker-image
+          source: {repository: ubuntu}
+
+          # type: registry-image
+          # source:
+          #   repository: busybox
+
+        inputs:
+        - name: source-code
+          # path: input-resources
+
+        outputs:
+        - name: output-folder
+
+        run:
+          path: find
+          args: [.]
+          # path: ./input-resources
