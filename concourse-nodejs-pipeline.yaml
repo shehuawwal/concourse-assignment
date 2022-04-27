@@ -2,7 +2,7 @@ resources:
 - name: source-code
   type: git
   source:
-    uri: https://github.com/rseroter/pluralsight-concourse-dotnetcore
+    uri: https://github.com/shehuawwal/concourse-assignment
     branch: master
 
 jobs:
